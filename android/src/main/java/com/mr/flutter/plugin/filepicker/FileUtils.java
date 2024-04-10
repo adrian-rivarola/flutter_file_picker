@@ -51,6 +51,10 @@ public class FileUtils {
 
         for (int i = 0; i < allowedExtensions.size(); i++) {
             final String mime = MimeTypeMap.getSingleton().getMimeTypeFromExtension(allowedExtensions.get(i));
+            // Add an additional mime type for bmp files
+            if (allowedExtensions.get(i).equals("bmp")) {
+                mimes.add("image/bmp");
+            }
             if (mime == null) {
                 Log.w(TAG, "Custom file type " + allowedExtensions.get(i) + " is unsupported and will be ignored.");
                 continue;
